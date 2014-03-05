@@ -1,0 +1,7 @@
+.explanation p {
+}
+
+#disconnect-button, #reset-button, #information-area, #posts-top, #posts-next, #plusone-top, #plusone-next {
+    display: inline;
+}
+

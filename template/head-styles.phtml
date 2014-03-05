@@ -1,0 +1,6 @@
+<?php $styles = explode(',', STYLES) ?>
+<?php if (isset($styles) && is_array($styles)): ?>
+<?php foreach ($styles as $style): ?>
+<link rel="stylesheet" href="<?php echo $style ?>">
+<?php endforeach; ?>
+<?php endif; ?>
