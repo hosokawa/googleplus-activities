@@ -1,6 +1,12 @@
 <?php $scripts = explode(',', SCRIPTS) ?>
 <?php if (isset($scripts) && is_array($scripts)): ?>
 <?php foreach ($scripts as $script): ?>
-<script src="<?php echo $script ?>"></script>
+<script src="<?php
+if (preg_match('@//@', $script)) {
+    echo $script;
+} else {
+    echo GOOGLEPLUS_APP_ROOT . $script;
+}
+?>"></script>
 <?php endforeach; ?>
 <?php endif; ?>
