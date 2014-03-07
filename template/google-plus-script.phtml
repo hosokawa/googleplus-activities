@@ -154,7 +154,7 @@ function collectPlusOneInfo() {
 function collectPlusOner() {
   if (plusOneInfo.collecting) {
     var maxResults = 100;
-    var revokeUrl = 'https://www.googleapis.com/plus/v1/activities/' + plusOneInfo.activities[plusOneInfo.postIndex] + '/people/plusoners?access_token=' + access_token + "&maxResults=" + maxResults;
+    var revokeUrl = 'https://www.googleapis.com/plus/v1/activities/' + plusOneInfo.activities[plusOneInfo.postIndex] + '/people/plusoners?access_token=' + access_token + "&fields=items(id)&maxResults=" + maxResults;
     if (!(plusOneInfo.onerPageToken == undefined)) {
       revokeUrl += '&pageToken=' + plusOneInfo.onerPageToken;
     }
@@ -183,7 +183,7 @@ function collectPlusOner() {
             collectPlusOner();
         } else {
             plusOneInfo.collecting = false;
-            document.getElementById('information-area').innerHTML = '';
+            document.getElementById('information-area').innerHTML = '<input type="text" name="googleplus_id" id="googleplus_check_id" ondblclick="displayInfo(this)" />';
             console.log(plusOneInfo);
         }
       },
@@ -192,6 +192,15 @@ function collectPlusOner() {
       }
     });
   }
+}
+
+function displayInfo(element) {
+    var key = 'PO' + element.value;
+    if (key in plusOneInfo.plusOner) {
+        document.getElementById('result-area').innerHTML = plusOneInfo.plusOner[key] + '/' + maxAnalyzePosts;
+    } else {
+        document.getElementById('result-area').innerHTML = '';
+    }
 }
 
 (
