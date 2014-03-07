@@ -95,7 +95,7 @@ function listPlusOne(activity_id, page_token, tagobj) {
           if (!plusOneInfo.collecting && (key in plusOneInfo.plusOner)) {
               plusOneStatistics = ' title="' + plusOneInfo.plusOner[key] + '/' + maxAnalyzePosts + '"';
           }
-          html += '<img src="' + item.image.url + '" alt="' + item.displayName + '"' + plusOneStatistics + '/><a href="' + item.url + '/posts" target="googleplus-plusone">' + item.displayName + '</a><br/>';
+          html += '<img src="' + item.image.url + '" alt="' + item.displayName + '"' + plusOneStatistics + '/><a href="https://plus.google.com/' + item.id + '/posts" target="googleplus-plusone">' + item.displayName + '</a><br/>';
       }
       document.getElementById('plusone-block').innerHTML = html;
       if (json.nextPageToken == undefined) {
