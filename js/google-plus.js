@@ -9,6 +9,14 @@ function signinCallback(authResult) {
   }
 }
 
+function id2Key(id) {
+    return 'PO' + id;
+}
+
+function cleanId(info) {
+    return info.replace(/[^0-9]/g, '');
+}
+
 function disconnectUser() {
   var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' + access_token;
 
@@ -91,18 +99,17 @@ function listPlusOne(activity_id, page_token, tagobj) {
       for (var i = 0; i < json.items.length; i++) {
           var item = json.items[i];
           var plusOneStatistics = '';
-          var key = 'PO' + item.id;
+          var key = id2Key(item.id);
           if (!plusOneInfo.collecting && (key in plusOneInfo.plusOner)) {
               plusOneStatistics = ' title="' + plusOneInfo.plusOner[key] + '/' + maxAnalyzePosts + '"';
           }
           html += '<img src="' + item.image.url + '" alt="' + item.displayName + '"' + plusOneStatistics + '/><a href="https://plus.google.com/' + item.id + '/posts" target="googleplus-plusone">' + item.displayName + '</a><br/>';
       }
       document.getElementById('plusone-block').innerHTML = html;
+      document.getElementById('plusone-top').innerHTML = '<button onclick="listPlusOne(\'' + activity_id + '\', null, null)">＋１先頭</button>';
       if (json.nextPageToken == undefined) {
-        document.getElementById('plusone-top').innerHTML = '';
         document.getElementById('plusone-next').innerHTML = '';
       } else {
-        document.getElementById('plusone-top').innerHTML = '<button onclick="listPlusOne(\'' + activity_id + '\', null, null)">＋１先頭</button>';
         document.getElementById('plusone-next').innerHTML = '<button onclick="listPlusOne(\'' + activity_id + '\', \'' + json.nextPageToken + '\', null)">＋１次頁</button>';
       }
       if (tagobj != null) {
@@ -154,7 +161,7 @@ function collectPlusOner() {
       success: function(json) {
         for (var i = 0; i < json.items.length; i++) {
             var item = json.items[i];
-            var key = 'PO' + item.id;
+            var key = id2Key(item.id);
             if (key in plusOneInfo.plusOner) {
                 plusOneInfo.plusOner[key]++;
             } else {
@@ -171,7 +178,6 @@ function collectPlusOner() {
         } else {
             plusOneInfo.collecting = false;
             document.getElementById('information-area').innerHTML = '<input type="text" name="googleplus_id" id="googleplus_check_id" ondblclick="displayInfo(this)" />';
-            console.log(plusOneInfo);
         }
       },
       error: function(e) {
@@ -182,7 +188,9 @@ function collectPlusOner() {
 }
 
 function displayInfo(element) {
-    var key = 'PO' + element.value;
+alert('hoge');
+    element.value = cleanId(element.value);
+    var key = id2Key(element.value);
     if (key in plusOneInfo.plusOner) {
         document.getElementById('result-area').innerHTML = plusOneInfo.plusOner[key] + '/' + maxAnalyzePosts;
     } else {
