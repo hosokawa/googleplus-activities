@@ -1,5 +1,28 @@
 <?php
-class Application {
+class GooglePlusApp extends \Slim\Slim {
+
+    function __construct($app_config) {
+        parent::__construct($app_config);
+
+        $this->get(
+            '/hello/:name',
+            array('GooglePlusApp', 'hello')
+        );
+
+        $this->get(
+            '/',
+            array('GooglePlusApp', 'index')
+        );
+    }
+
+    public function index() {
+        $app = GooglePlusApp::getInstance();
+        echo $app->replace_keys($app->config('templates.path') . '/page.phtml');
+    }
+
+    public function hello($name) {
+        echo "Hello, $name";
+    }
 
     private function include_file($file) {
         ob_start();
@@ -16,7 +39,7 @@ class Application {
         if (is_array($matches) && count($matches) > 0) {
             foreach ($matches[0] as $match) {
                 $file = preg_replace('/%/', '', $match);
-                $ret[$match] = "template/" . $file . ".phtml";
+                $ret[$match] = $this->config('templates.path') . "/" . $file . ".phtml";
             }
         }
         return $ret;
@@ -30,9 +53,5 @@ class Application {
             $ret = preg_replace('/' . $replace . '/', $file_value, $ret);
         }
         return $ret;
-    }
-
-    public function run() {
-        echo $this->replace_keys('template/page.phtml');
     }
 }

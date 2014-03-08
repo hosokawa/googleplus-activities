@@ -1,7 +1,11 @@
 <?php
-include "config/google-plus.php";
-include "config/config.php";
-include "classes/Application.php";
+require_once 'vendor/autoload.php';
+require_once realpath(__DIR__) . "/classes/Config.php";
+require_once realpath(__DIR__) . "/classes/Application.php";
 
-$app = new Application();
+$config = new GooglePlusAppConfig();
+$app_config = $config->getAppConfig();
+
+$app = new GooglePlusApp($app_config);
+
 $app->run();

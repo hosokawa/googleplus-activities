@@ -1,1 +1,3 @@
-/config/google-plus.php
+/phpinfo.php
+/vendor
+/config/local*.php

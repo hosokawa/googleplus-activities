@@ -1,6 +1,6 @@
 <script type="text/javascript">
 var access_token = "";
-var maxAnalyzePosts = <?php echo MAX_ANALYZE_POST ?>;
+var maxAnalyzePosts = <?php echo $this->config('APPLICATION.MAX_ANALYZE_POST') ?>;
 var plusOneInfo = {
     collecting: true,
     postIndex: 0,
@@ -9,6 +9,6 @@ var plusOneInfo = {
     plusOner: {}
 };
 var circleObj = {};
-var listPostCount = <?php echo LIST_POST_COUNT ?>;
-var listPlusOneCount = <?php echo LIST_PLUS_ONE_COUNT ?>;
+var listPostCount = <?php echo $this->config('APPLICATION.LIST_POST_COUNT') ?>;
+var listPlusOneCount = <?php echo $this->config('APPLICATION.LIST_PLUS_ONE_COUNT') ?>;
 </script>
