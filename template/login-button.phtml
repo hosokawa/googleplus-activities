@@ -2,7 +2,7 @@
   <span
     class="g-signin"
     data-callback="signinCallback"
-    data-clientid="<?php echo CLIENT_ID ?>"
+    data-clientid="<?php echo $this->config('GOOGLEPLUS_API.CLIENT_ID') ?>"
     data-cookiepolicy="single_host_origin"
     data-requestvisibleactions="http://schemas.google.com/AddActivity"
     data-scope="https://www.googleapis.com/auth/plus.login">

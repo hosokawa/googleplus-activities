@@ -1,11 +1,10 @@
-<?php $scripts = explode(',', SCRIPTS) ?>
-<?php if (isset($scripts) && is_array($scripts)): ?>
+<?php if ($scripts = $this->config('header_scripts')): ?>
 <?php foreach ($scripts as $script): ?>
 <script src="<?php
 if (preg_match('@//@', $script)) {
     echo $script;
 } else {
-    echo GOOGLEPLUS_APP_ROOT . $script;
+    echo $this->config('SERVER.HTTP_ROOT') . $script;
 }
 ?>"></script>
 <?php endforeach; ?>

@@ -1,11 +1,10 @@
-<?php $styles = explode(',', STYLES) ?>
-<?php if (isset($styles) && is_array($styles)): ?>
+<?php if ($styles = $this->config('header_styles')): ?>
 <?php foreach ($styles as $style): ?>
 <link rel="stylesheet" href="<?php
 if (preg_match('@//@', $style)) {
     echo $style;
 } else {
-    echo GOOGLEPLUS_APP_ROOT . $style;
+    echo $this->config('SERVER.HTTP_ROOT') . $style;
 }
 ?>">
 <?php endforeach; ?>

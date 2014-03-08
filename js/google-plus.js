@@ -188,7 +188,6 @@ function collectPlusOner() {
 }
 
 function displayInfo(element) {
-alert('hoge');
     element.value = cleanId(element.value);
     var key = id2Key(element.value);
     if (key in plusOneInfo.plusOner) {
