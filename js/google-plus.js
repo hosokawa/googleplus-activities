@@ -14,7 +14,7 @@ function id2Key(id) {
 }
 
 function cleanId(info) {
-    return info.replace(/[^0-9]/g, '');
+    return info.replace(/\/$/g, '').replace(/^.*\//g, '');
 }
 
 function disconnectUser() {
