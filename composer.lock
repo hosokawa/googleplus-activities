@@ -1,22 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
     "hash": "3572ef5486e01be41b96a1fdace500a6",
     "packages": [
         {
             "name": "slim/slim",
-            "version": "2.4.2",
+            "version": "2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeguy/Slim.git",
-                "reference": "3a2ac723f17b5d81607287ff28575d38b9fbc70e"
+                "reference": "4906b77a07c7bd6ff1a99aea903e940a2d4fa106"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim/zipball/3a2ac723f17b5d81607287ff28575d38b9fbc70e",
-                "reference": "3a2ac723f17b5d81607287ff28575d38b9fbc70e",
+                "url": "https://api.github.com/repos/codeguy/Slim/zipball/4906b77a07c7bd6ff1a99aea903e940a2d4fa106",
+                "reference": "4906b77a07c7bd6ff1a99aea903e940a2d4fa106",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +50,7 @@
                 "rest",
                 "router"
             ],
-            "time": "2014-02-16 18:18:25"
+            "time": "2014-04-05 18:33:59"
         }
     ],
     "packages-dev": [
@@ -62,6 +63,7 @@
     "stability-flags": [
 
     ],
+    "prefer-stable": false,
     "platform": [
 
     ],
