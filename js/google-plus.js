@@ -14,7 +14,11 @@ function id2Key(id) {
 }
 
 function cleanId(info) {
-    return info.replace(/\/$/g, '').replace(/^.*\//g, '');
+    var parts = info.split('/');
+    if (parts.length == 6) {
+        return parts[5];
+    }
+    return parts[3];
 }
 
 function disconnectUser() {

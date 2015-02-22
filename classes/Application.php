@@ -15,7 +15,7 @@ class GooglePlusApp extends \Slim\Slim {
         );
     }
 
-    public function index() {
+    public static function index() {
         $app = GooglePlusApp::getInstance();
         echo $app->replace_keys($app->config('templates.path') . '/page.phtml');
     }
