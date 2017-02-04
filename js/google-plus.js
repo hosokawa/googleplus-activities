@@ -33,7 +33,7 @@ function disconnectUser() {
     success: function(nullResponse) {
       document.getElementById('signinButton').setAttribute('style', 'display: inline');
       access_token = '';
-      document.location = 'http://www.dear-jpn.com/google-plus/';
+      document.location = 'https://www.dear-jpn.com/google-plus/';
     },
     error: function(e) {
       console.log("There was an error: " + authResult['error']);
